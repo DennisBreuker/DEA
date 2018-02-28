@@ -33,7 +33,7 @@ public class ClockTest {
     }
 
     @Test
-    public void Inc_13_59_59_ShouldResultIn_00_00_00() {
+    public void Inc_23_59_59_ShouldResultIn_00_00_00() {
         Clock clock = new Clock(23, 59, 59);
         clock.incSecond();
         assertEquals(0, clock.getHh());
