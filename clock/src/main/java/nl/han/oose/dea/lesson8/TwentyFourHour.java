@@ -8,8 +8,8 @@ public class TwentyFourHour implements Observer {
         Clock clock = (Clock) o;
         System.out.printf(
                 "%02d:%02d:%02d\n",
-                clock.getHh(),
-                clock.getMm(),
-                clock.getSs());
+                clock.getHours(),
+                clock.getMinutes(),
+                clock.getSeconds());
     }
 }

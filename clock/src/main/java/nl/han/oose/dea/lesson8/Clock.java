@@ -3,14 +3,14 @@ package nl.han.oose.dea.lesson8;
 import java.util.Observable;
 
 public class Clock extends Observable implements Runnable {
-    private int hh;
-    private int mm;
-    private int ss;
+    private int hours;
+    private int minutes;
+    private int seconds;
 
-    public Clock(int hh, int mm, int ss) {
-        this.hh = hh;
-        this.mm = mm;
-        this.ss = ss;
+    public Clock(int hours, int minutes, int seconds) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
         setChanged();
         notifyObservers();
     }
@@ -19,33 +19,33 @@ public class Clock extends Observable implements Runnable {
         this(11,59,55);
     }
 
+    public int getHours() {
+        return hours;
+    }
+
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public int getSeconds() {
+        return seconds;
+    }
+
     public void incSecond() {
-        ss++;
-        if (ss == 60) {
-            ss = 0;
-            mm++;
-            if (mm == 60) {
-                mm = 0;
-                hh++;
-                if (hh == 24) {
-                    hh = 0;
+        seconds++;
+        if (seconds == 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes == 60) {
+                minutes = 0;
+                hours++;
+                if (hours == 24) {
+                    hours = 0;
                 }
             }
         }
         setChanged();
         notifyObservers();
-    }
-
-    public int getHh() {
-        return hh;
-    }
-
-    public int getMm() {
-        return mm;
-    }
-
-    public int getSs() {
-        return ss;
     }
 
     public void run() {
