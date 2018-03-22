@@ -12,11 +12,13 @@ import javax.ws.rs.core.Response;
 
 @Path("")
 public class MessageService {
+    @Inject
+    private Message dao;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/message")
     public Response getMessage(int id) {
-        Message dao = new MessageDao();
         String message = dao.getMessage(id);
         return Response.ok(message).build();
     }
