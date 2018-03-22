@@ -2,6 +2,7 @@ package nl.han.oose.dea.services;
 
 import nl.han.oose.dea.dao.Message;
 import org.junit.Assert;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,7 +23,7 @@ public class MessageServiceTest {
     @Mock
     private Message dao;
 
-    @org.junit.Test
+    @Test
     public void zeroShouldReturnHello() {
         // "program" the mock
         when(dao.getMessage(0)).thenReturn("Hello");
@@ -40,5 +41,14 @@ public class MessageServiceTest {
         String actual = (String) response.getEntity();
         String expected = "Hello";
         Assert.assertEquals(actual, expected);
+    }
+
+        @Test(expected=IllegalArgumentException.class)
+        public void negativeShouldThrow() {
+            // "program" the mock
+            when(dao.getMessage(-1)).thenThrow(new IllegalArgumentException());
+
+            // execute method to be tested
+            Response response = service.getMessage(-1);
     }
 }
